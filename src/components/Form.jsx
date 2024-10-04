@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../styles/Form.css'
 import FormSection from './partials/FormSection'
-import { faCirclePlus, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
-function Form(){
+function Form({onImageUpload}){
     return (
     <form className='form'>
         <div className='form__button__wrapper'>
@@ -13,9 +13,9 @@ function Form(){
         </div>
 
         <div className='form__section'>
-            <FormSection title="Work Experience" isRemovable={false} isDraggable={false} />
-            <FormSection title="Work Experience" isRemovable={false} isDraggable={false} />
-            <FormSection title="Work Experience" isRemovable={false} isDraggable={false} />
+            <FormSection title="Personal Details" personal={true} isRemovable={false} isDraggable={false} upload={true} onImageUpload={onImageUpload} />
+            <FormSection title="Work Experience" work={true} isRemovable={false} isDraggable={false} />
+            <FormSection title="Education" education={true} isRemovable={false} isDraggable={false} />
         </div>
 
         <button className='form__add'>
