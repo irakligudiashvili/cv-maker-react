@@ -21,7 +21,7 @@ function CvPreview(){
                 </div>
                 <div className='cv__contact'>
                     <FontAwesomeIcon icon={faGithub} />
-                    <a href='https://github.com/johnsmith'>johnsmith</a>
+                    <a href='https://github.com/johnsmith' target='_blank'>johnsmith</a>
                 </div>
             </div>
         </div>
