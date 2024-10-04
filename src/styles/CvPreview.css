@@ -2,8 +2,8 @@
     background-color: #fff;
     color: #000;
 
-    height: 95vh;
-    width: calc(95vh / 1.414);
+    height: 100%;
+    min-width: calc(100vh / 1.414);
 
     box-sizing: border-box;
     padding: 20px;
