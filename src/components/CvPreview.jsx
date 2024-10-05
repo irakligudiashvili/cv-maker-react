@@ -33,23 +33,13 @@ function CvPreview({uploadedImage, formData}){
             <h2 className='cv__section__header'>Work Experience</h2>
             <div className='cv__section__content'>
                 <div className='cv__section__subheader'>
-                    <h3>Company Name</h3>
-                    <p>2024 - 2025</p>
+                    <h3>{formData.companyName}</h3>
+                    <p>{formData.startDate} - {formData.endDate}</p>
                 </div>
                 <ul className='cv__section__ul'>
-                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam totam laboriosam explicabo repellendus quasi hic minus ad recusandae officia reprehenderit.</li>
-                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam totam laboriosam explicabo repellendus quasi hic minus ad recusandae officia reprehenderit.</li>
-                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam totam laboriosam explicabo repellendus quasi hic minus ad recusandae officia reprehenderit.</li>
-                </ul>
-            </div>
-            <div className='cv__section__content'>
-                <div className='cv__section__subheader'>
-                    <h3>Company Name</h3>
-                    <p>2024 - 2025</p>
-                </div>
-                <ul className='cv__section__ul'>
-                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam totam laboriosam explicabo repellendus quasi hic minus ad recusandae officia reprehenderit.</li>
-                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam totam laboriosam explicabo repellendus quasi hic minus ad recusandae officia reprehenderit.</li>
+                    {formData.workObligations && formData.workObligations.map((item, index) => (
+                        <li key={index}>{item}</li>
+                    ))}
                 </ul>
             </div>
         </div>

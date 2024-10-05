@@ -29,7 +29,13 @@ function FormSection({ title, isRemovable, isDraggable, upload, onImageUpload, p
 
     const handleInputChange = (e) => {
         const {name, value} = e.target;
-        onFormDataChange(name, value);
+        
+        if(name === 'workObligations'){
+            const lines = value.split('\n');
+            onFormDataChange(name, lines);
+        } else {
+            onFormDataChange(name, value);
+        }
     }
 
     return (
@@ -99,7 +105,7 @@ function FormSection({ title, isRemovable, isDraggable, upload, onImageUpload, p
                             <input className='content__input' name='endDate' onChange={handleInputChange} />
                         </div>
                     </div>
-                    <textarea className='content__textArea' rows='8'></textarea>
+                    <textarea className='content__textArea' rows='8' name='workObligations' onChange={handleInputChange}></textarea>
                 </div>
             )}
 
