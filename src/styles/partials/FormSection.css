@@ -95,6 +95,7 @@ input[type="file"] {
     outline: none;
 
     color: #000;
+    text-indent: 5px;
 }
 
 .hidden{
@@ -133,4 +134,37 @@ input[type="file"] {
     outline: none;
 
     color: #000;
+
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.cv__section{
+    padding-top: 15px;
+}
+
+.cv__section__header{
+    border-bottom: #000 solid 2px;
+}
+
+.cv__section__content{
+    padding-top: 10px;
+}
+
+.cv__section__subheader{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5px;
+}
+
+.cv__section__ul{
+    box-sizing: border-box;
+    padding-left: 30px;
+    padding-right: 10px;
+    list-style-type: disc;
+}
+
+.cv__section__ul li{
+    text-align: justify;
+    text-justify: inter-word;
 }

@@ -28,6 +28,49 @@ function CvPreview({uploadedImage, formData}){
                 </div>
             </div>
         </div>
+
+        <div className='cv__section'>
+            <h2 className='cv__section__header'>Work Experience</h2>
+            <div className='cv__section__content'>
+                <div className='cv__section__subheader'>
+                    <h3>Company Name</h3>
+                    <p>2024 - 2025</p>
+                </div>
+                <ul className='cv__section__ul'>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam totam laboriosam explicabo repellendus quasi hic minus ad recusandae officia reprehenderit.</li>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam totam laboriosam explicabo repellendus quasi hic minus ad recusandae officia reprehenderit.</li>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam totam laboriosam explicabo repellendus quasi hic minus ad recusandae officia reprehenderit.</li>
+                </ul>
+            </div>
+            <div className='cv__section__content'>
+                <div className='cv__section__subheader'>
+                    <h3>Company Name</h3>
+                    <p>2024 - 2025</p>
+                </div>
+                <ul className='cv__section__ul'>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam totam laboriosam explicabo repellendus quasi hic minus ad recusandae officia reprehenderit.</li>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam totam laboriosam explicabo repellendus quasi hic minus ad recusandae officia reprehenderit.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div className='cv__section'>
+            <h2 className='cv__section__header'>Education</h2>
+            <div className='cv__section__content'>
+                <div className='cv__section__subheader'>
+                    <h3>Company Name</h3>
+                    <p>Dev Ops</p>
+                    <p>Masters</p>
+                </div>
+            </div>
+            <div className='cv__section__content'>
+                <div className='cv__section__subheader'>
+                    <h3>Company Name</h3>
+                    <p>Computer Science</p>
+                    <p>Bachelor</p>
+                </div>
+            </div>
+        </div>
     </div>
     </>)
 }

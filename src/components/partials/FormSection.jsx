@@ -88,15 +88,15 @@ function FormSection({ title, isRemovable, isDraggable, upload, onImageUpload, p
                     <div className='content__container--triple'>
                         <div className='content__wrapper'>
                             <label className='content__label'>Company Name</label>
-                            <input className='content__input' />
+                            <input className='content__input' name='companyName' onChange={handleInputChange} />
                         </div>
                         <div className='content__wrapper'>
                             <label className='content__label'>Start Date</label>
-                            <input className='content__input' />
+                            <input className='content__input' name='startDate' onChange={handleInputChange} />
                         </div>
                         <div className='content__wrapper'>
                             <label className='content__label'>End Date</label>
-                            <input className='content__input' />
+                            <input className='content__input' name='endDate' onChange={handleInputChange} />
                         </div>
                     </div>
                     <textarea className='content__textArea' rows='8'></textarea>

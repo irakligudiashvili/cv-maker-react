@@ -3,7 +3,7 @@ import '../styles/Form.css'
 import FormSection from './partials/FormSection'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
-function Form({onImageUpload}){
+function Form({onImageUpload, onFormDataChange}){
     return (
     <form className='form'>
         <div className='form__button__wrapper'>
@@ -13,9 +13,9 @@ function Form({onImageUpload}){
         </div>
 
         <div className='form__section'>
-            <FormSection title="Personal Details" personal={true} isRemovable={false} isDraggable={false} upload={true} onImageUpload={onImageUpload} />
-            <FormSection title="Work Experience" work={true} isRemovable={false} isDraggable={false} />
-            <FormSection title="Education" education={true} isRemovable={false} isDraggable={false} />
+            <FormSection onFormDataChange={onFormDataChange} title="Personal Details" personal={true} isRemovable={false} isDraggable={false} upload={true} onImageUpload={onImageUpload} />
+            <FormSection onFormDataChange={onFormDataChange} title="Work Experience" work={true} isRemovable={false} isDraggable={false} />
+            <FormSection onFormDataChange={onFormDataChange} title="Education" education={true} isRemovable={false} isDraggable={false} />
         </div>
 
         <button className='form__add'>

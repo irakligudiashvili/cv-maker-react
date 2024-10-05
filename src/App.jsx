@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className='body'>
-      <Form onImageUpload={handleImageUpload} onFormDataChange={handleFormDataChange}/>
+      <Form onImageUpload={handleImageUpload} onFormDataChange={handleFormDataChange} />
       <CvPreview uploadedImage={uploadedImage} formData={formData} />
     </div>
   )
