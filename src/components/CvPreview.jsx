@@ -48,20 +48,15 @@ function CvPreview({uploadedImage, formData}){
 
         <div className='cv__section'>
             <h2 className='cv__section__header'>Education</h2>
-            <div className='cv__section__content'>
-                <div className='cv__section__subheader'>
-                    <h3>Company Name</h3>
-                    <p>Dev Ops</p>
-                    <p>Masters</p>
+            {formData.education && formData.education.map((uni, index) => (
+                <div key={index} className='cv__section__content'>
+                    <div className='cv__section__subheader'>
+                        <h3>{uni.universityName}</h3>
+                        <p>{uni.major}</p>
+                        <p>{uni.degree}</p>
+                    </div>
                 </div>
-            </div>
-            <div className='cv__section__content'>
-                <div className='cv__section__subheader'>
-                    <h3>Company Name</h3>
-                    <p>Computer Science</p>
-                    <p>Bachelor</p>
-                </div>
-            </div>
+            ))}
         </div>
     </div>
     </>)

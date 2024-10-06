@@ -1,14 +1,17 @@
-import { faChevronDown, faCloudArrowUp, faGripVertical, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faChevronDown, faCloudArrowUp, faGripVertical, faPenToSquare, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import '../../styles/partials/FormSection.css'
 import { useState } from "react"
 
-function FormSection({ title, isRemovable, isDraggable, upload, onImageUpload, personal, work, education, onFormDataChange }) {
+function FormSection({ title, upload, onImageUpload, personal, work, education, onFormDataChange, custom }) {
     const [isVisible, setIsVisible] = useState(true);
     const [uploadedImage, setUploadedImage] = useState(null);
     const [workExperience, setWorkExperience] = useState([
         { companyName: '', startDate: '', endDate: '', workObligations: [''] }
-    ]);    
+    ]);
+    const [university, setUniversity] = useState([
+        { universityName: '', major: '', degree: ''}
+    ]);
 
     const toggleVisibility = () => {
         setIsVisible(!isVisible);
@@ -49,6 +52,13 @@ function FormSection({ title, isRemovable, isDraggable, upload, onImageUpload, p
         onFormDataChange('workExperience', updatedWork);
     }
 
+    const handleEducationInputChange = (index, field, value) => {
+        const updatedUniversity = [...university];
+        updatedUniversity[index][field] = value;
+        setUniversity(updatedUniversity);
+        onFormDataChange('education', updatedUniversity);
+    }
+
     const addNewCompany = (e) => {
         e.preventDefault();
 
@@ -64,14 +74,32 @@ function FormSection({ title, isRemovable, isDraggable, upload, onImageUpload, p
         onFormDataChange('workExperience', updatedWork);
     }
 
+    const addNewUniversity = (e) => {
+        e.preventDefault();
+
+        setUniversity([
+            ...university,
+            {universityName: '', major: '', degree: ''}
+        ]);
+    }
+
+    const removeUniversity = (index) => {
+        const updatedUniversity = university.filter((_, i) => i !== index);
+        setUniversity(updatedUniversity);
+        onFormDataChange('education', updatedUniversity);
+    }
+
     return (
     <div className='section'>
         <div className='section__header' onClick={toggleVisibility}>
-            <h2>{title}</h2>
+            <div className='section__subheader'>
+                <h2>{title}</h2>
+                {custom && <FontAwesomeIcon icon={faPenToSquare} />}
+            </div>
 
             <div>
-                {isRemovable && <FontAwesomeIcon icon={faTrash} className='' />}
-                {isDraggable && <FontAwesomeIcon icon={faGripVertical} className='' />}
+                {custom && <FontAwesomeIcon icon={faTrash} className='' />}
+                {custom && <FontAwesomeIcon icon={faGripVertical} className='' />}
                 <FontAwesomeIcon icon={faChevronDown} className='' />
             </div>
         </div>
@@ -168,24 +196,51 @@ function FormSection({ title, isRemovable, isDraggable, upload, onImageUpload, p
 
 
             {education && (
-                <div className='content__container content__container--triple'>
-                    <div className='content__wrapper'>
-                        <label className='content__label'>University</label>
-                        <input className='content__input' />
-                    </div>
-                    <div className='content__wrapper'>
-                        <label className='content__label'>Major</label>
-                        <input className='content__input' />
-                    </div>
-                    <div className='content__wrapper'>
-                        <label className='content__label'>Degree</label>
-                        <select className='content__select'>
-                            <option className='content__option' disabled>Select Degree...</option>
-                            <option className='content__option'>Bachelor</option>
-                            <option className='content__option'>Masters</option>
-                            <option className='content__option'>PhD</option>
-                        </select>
-                    </div>
+                <>
+                    {university.map((uni, index) => (
+                        <div key={index} className='content__container content__container--triple'>
+                            <div className='content__wrapper'>
+                                <label className='content__label'>University</label>
+                                <input 
+                                className='content__input' 
+                                name='universityName'
+                                value={uni.universityName}
+                                onChange={(e) => handleEducationInputChange(index, 'universityName', e.target.value)}
+                                />
+                            </div>
+                            <div className='content__wrapper'>
+                                <label className='content__label'>Major</label>
+                                <input 
+                                className='content__input' 
+                                name='major'
+                                value={uni.major}
+                                onChange={(e) => handleEducationInputChange(index, 'major', e.target.value)}
+                                />
+                            </div>
+                            <div className='content__wrapper'>
+                                <label className='content__label'>Degree</label>
+                                <select className='content__select' name='degree' value={uni.degree} onChange={(e) => handleEducationInputChange(index, 'degree', e.target.value)}>
+                                    <option className='content__option' value='' selected disabled>Select Degree...</option>
+                                    <option className='content__option'>Bachelor</option>
+                                    <option className='content__option'>Masters</option>
+                                    <option className='content__option'>PhD</option>
+                                </select>
+                            </div>
+
+                            <button type='button' className='form__remove form__remove--dark' onClick={() => removeUniversity(index)}>
+                                Remove
+                            </button>
+                        </div>
+                    ))}
+                    <button className='form__add form__add--dark' onClick={addNewUniversity}>
+                        <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                </>
+            )}
+
+            {custom && (
+                <div>
+                    
                 </div>
             )}
         </div>
