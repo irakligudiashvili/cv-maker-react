@@ -1,4 +1,4 @@
-import { faChevronDown, faCloudArrowUp, faGripVertical, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faChevronDown, faCloudArrowUp, faGripVertical, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import '../../styles/partials/FormSection.css'
 import { useState } from "react"
@@ -6,6 +6,9 @@ import { useState } from "react"
 function FormSection({ title, isRemovable, isDraggable, upload, onImageUpload, personal, work, education, onFormDataChange }) {
     const [isVisible, setIsVisible] = useState(true);
     const [uploadedImage, setUploadedImage] = useState(null);
+    const [workExperience, setWorkExperience] = useState([
+        { companyName: '', startDate: '', endDate: '', workObligations: [''] }
+    ]);    
 
     const toggleVisibility = () => {
         setIsVisible(!isVisible);
@@ -28,14 +31,37 @@ function FormSection({ title, isRemovable, isDraggable, upload, onImageUpload, p
     };
 
     const handleInputChange = (e) => {
-        const {name, value} = e.target;
-        
-        if(name === 'workObligations'){
-            const lines = value.split('\n');
-            onFormDataChange(name, lines);
-        } else {
-            onFormDataChange(name, value);
-        }
+        const { name, value } = e.target;
+        onFormDataChange(name, value);
+    };    
+
+    const handleWorkInputChange = (index, field, value) => {
+        const updatedWork = [...workExperience];
+        updatedWork[index][field] = value;
+        setWorkExperience(updatedWork);
+        onFormDataChange('workExperience', updatedWork);
+    }
+
+    const handleWorkObligationsChange = (index, value) => {
+        const updatedWork = [...workExperience];
+        updatedWork[index].workObligations = value.split('\n');
+        setWorkExperience(updatedWork);
+        onFormDataChange('workExperience', updatedWork);
+    }
+
+    const addNewCompany = (e) => {
+        e.preventDefault();
+
+        setWorkExperience([
+            ...workExperience,
+            {companyName: '', startDate: '', endDate: '', workObligations: ['']}
+        ]);
+    }
+
+    const removeCompany = (index) => {
+        const updatedWork = workExperience.filter((_, i) => i !== index);
+        setWorkExperience(updatedWork);
+        onFormDataChange('workExperience', updatedWork);
     }
 
     return (
@@ -90,24 +116,56 @@ function FormSection({ title, isRemovable, isDraggable, upload, onImageUpload, p
             )}
 
             {work && (
-                <div className='content__container content__container--column'>
-                    <div className='content__container--triple'>
-                        <div className='content__wrapper'>
-                            <label className='content__label'>Company Name</label>
-                            <input className='content__input' name='companyName' onChange={handleInputChange} />
+                <>
+                    {workExperience.map((company, index) => (
+                        <div key={index} className='content__container content__container--column'>
+                            <div className='content__container--triple'>
+                                <div className='content__wrapper'>
+                                    <label className='content__label'>Company Name</label>
+                                    <input
+                                        className='content__input'
+                                        name='companyName'
+                                        value={company.companyName}
+                                        onChange={(e) => handleWorkInputChange(index, 'companyName', e.target.value)}
+                                    />
+                                </div>
+                                <div className='content__wrapper'>
+                                    <label className='content__label'>Start Date</label>
+                                    <input
+                                        className='content__input'
+                                        name='startDate'
+                                        value={company.startDate}
+                                        onChange={(e) => handleWorkInputChange(index, 'startDate', e.target.value)}
+                                    />
+                                </div>
+                                <div className='content__wrapper'>
+                                    <label className='content__label'>End Date</label>
+                                    <input
+                                        className='content__input'
+                                        name='endDate'
+                                        value={company.endDate}
+                                        onChange={(e) => handleWorkInputChange(index, 'endDate', e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                            <textarea
+                                className='content__textArea'
+                                rows='8'
+                                name='workObligations'
+                                value={company.workObligations.join('\n')}
+                                onChange={(e) => handleWorkObligationsChange(index, e.target.value)}
+                            ></textarea>
+                            <button type='button' className='form__remove form__remove--dark' onClick={() => removeCompany(index)}>
+                                Remove Company
+                            </button>
                         </div>
-                        <div className='content__wrapper'>
-                            <label className='content__label'>Start Date</label>
-                            <input className='content__input' name='startDate' onChange={handleInputChange} />
-                        </div>
-                        <div className='content__wrapper'>
-                            <label className='content__label'>End Date</label>
-                            <input className='content__input' name='endDate' onChange={handleInputChange} />
-                        </div>
-                    </div>
-                    <textarea className='content__textArea' rows='8' name='workObligations' onChange={handleInputChange}></textarea>
-                </div>
+                    ))}
+                    <button className='form__add form__add--dark' onClick={addNewCompany}>
+                        <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                </>
             )}
+
 
             {education && (
                 <div className='content__container content__container--triple'>
@@ -122,7 +180,7 @@ function FormSection({ title, isRemovable, isDraggable, upload, onImageUpload, p
                     <div className='content__wrapper'>
                         <label className='content__label'>Degree</label>
                         <select className='content__select'>
-                            <option className='content__option' selected disabled>Select Degree...</option>
+                            <option className='content__option' disabled>Select Degree...</option>
                             <option className='content__option'>Bachelor</option>
                             <option className='content__option'>Masters</option>
                             <option className='content__option'>PhD</option>

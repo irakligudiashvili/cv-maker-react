@@ -31,17 +31,19 @@ function CvPreview({uploadedImage, formData}){
 
         <div className='cv__section'>
             <h2 className='cv__section__header'>Work Experience</h2>
-            <div className='cv__section__content'>
-                <div className='cv__section__subheader'>
-                    <h3>{formData.companyName}</h3>
-                    <p>{formData.startDate} - {formData.endDate}</p>
+            {formData.workExperience && formData.workExperience.map((company, index) => (
+                <div key={index} className='cv__section__content'>
+                    <div className='cv__section__subheader'>
+                        <h3>{company.companyName || 'Company Name'}</h3>
+                        <p>{company.startDate || 'Start Date'} - {company.endDate || 'End Date'}</p>
+                    </div>
+                    <ul className='cv__section__ul'>
+                        {company.workObligations.map((item, i) => (
+                            <li key={i}>{item || 'Work Obligation'}</li>
+                        ))}
+                    </ul>
                 </div>
-                <ul className='cv__section__ul'>
-                    {formData.workObligations && formData.workObligations.map((item, index) => (
-                        <li key={index}>{item}</li>
-                    ))}
-                </ul>
-            </div>
+            ))}
         </div>
 
         <div className='cv__section'>

@@ -72,3 +72,26 @@
 .form__add:hover{
     cursor: pointer;
 }
+
+.form__add--dark{
+    background-color: #505255;
+    color: #fff;
+}
+
+.form__remove{
+    background-color: #DE4242;
+    border: none;
+    height: 30px;
+    width: 200px;
+    margin: auto;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+
+    opacity: 0.8;
+}
+
+.form__remove:hover{
+    cursor: pointer;
+    opacity: 1;
+}
