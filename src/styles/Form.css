@@ -39,7 +39,7 @@
 }
 
 .form__button--clear{
-    background-color: #DE4242;
+    background-color: #e91111;
 }
 
 .form__button--undo{
@@ -79,7 +79,7 @@
 }
 
 .form__remove{
-    background-color: #DE4242;
+    background-color: #e91111;
     border: none;
     height: 30px;
     width: 200px;

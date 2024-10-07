@@ -97,9 +97,9 @@ function FormSection({ title, upload, onImageUpload, personal, work, education, 
                 {custom && <FontAwesomeIcon icon={faPenToSquare} />}
             </div>
 
-            <div>
-                {custom && <FontAwesomeIcon icon={faTrash} className='' />}
-                {custom && <FontAwesomeIcon icon={faGripVertical} className='' />}
+            <div className='section__config'>
+                {custom && <FontAwesomeIcon icon={faTrash} className='section__config__delete' />}
+                {custom && <FontAwesomeIcon icon={faGripVertical} className='section__config__drag' />}
                 <FontAwesomeIcon icon={faChevronDown} className='' />
             </div>
         </div>
@@ -194,7 +194,6 @@ function FormSection({ title, upload, onImageUpload, personal, work, education, 
                 </>
             )}
 
-
             {education && (
                 <>
                     {university.map((uni, index) => (
@@ -240,7 +239,14 @@ function FormSection({ title, upload, onImageUpload, personal, work, education, 
 
             {custom && (
                 <div>
-                    
+                    <label>Custom Information</label>
+                    <textarea
+                        className='content__textArea'
+                        rows='8'
+                        name='workObligations'
+                        // value={company.workObligations.join('\n')}
+                        // onChange={(e) => handleWorkObligationsChange(index, e.target.value)}
+                    ></textarea>
                 </div>
             )}
         </div>

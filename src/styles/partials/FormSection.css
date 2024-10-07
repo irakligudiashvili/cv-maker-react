@@ -23,6 +23,26 @@
 .section__subheader{
     display: flex;
     align-items: center;
+    gap: 10px;
+}
+
+.section__subheader:hover{
+    opacity: 0.7;
+}
+
+.section__config{
+    display: flex;
+    gap: 15px;
+}
+
+.section__config__delete{
+    color: #e91111;
+    opacity: 0.8;
+}
+
+.section__config__delete:hover{
+    opacity: 1;
+    cursor: pointer;
 }
 
 input[type="file"] {
@@ -51,7 +71,7 @@ input[type="file"] {
 }
 
 .section__button--remove{
-    background-color: #DE4242;
+    background-color: #e91111;
 }
 
 .content{
