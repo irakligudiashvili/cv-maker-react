@@ -12,10 +12,32 @@ function FormSection({ title, upload, onImageUpload, personal, work, education, 
     const [university, setUniversity] = useState([
         { universityName: '', major: '', degree: ''}
     ]);
+    const [isEditingTitle, setIsEditingTitle] = useState(false);
+    const [sectionTitle, setSectionTitle] = useState(title);
 
     const toggleVisibility = () => {
         setIsVisible(!isVisible);
     };
+
+    const handleTitleClick = () => {
+        console.log('Title clicked');
+        setIsEditingTitle(true);
+    };
+
+    const handleTitleChange = (e) => {
+        setSectionTitle(e.target.value);
+    }
+
+    const handleTitleKeyPress = (e) => {
+        if(e.key === 'Enter'){
+            e.preventDefault();
+            setIsEditingTitle(false);
+        }
+    };
+
+    const handleBlur = () => {
+        setIsEditingTitle(false);
+    }
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
@@ -91,7 +113,7 @@ function FormSection({ title, upload, onImageUpload, personal, work, education, 
 
     return (
     <div className='section'>
-        <div className='section__header' onClick={toggleVisibility}>
+        <div className='section__header'>
             <div className='section__subheader'>
                 <h2>{title}</h2>
                 {custom && <FontAwesomeIcon icon={faPenToSquare} />}
@@ -100,7 +122,7 @@ function FormSection({ title, upload, onImageUpload, personal, work, education, 
             <div className='section__config'>
                 {custom && <FontAwesomeIcon icon={faTrash} className='section__config__delete' />}
                 {custom && <FontAwesomeIcon icon={faGripVertical} className='section__config__drag' />}
-                <FontAwesomeIcon icon={faChevronDown} className='' />
+                <FontAwesomeIcon icon={faChevronDown} onClick={toggleVisibility} className='' />
             </div>
         </div>
 
@@ -239,11 +261,23 @@ function FormSection({ title, upload, onImageUpload, personal, work, education, 
 
             {custom && (
                 <div>
-                    <label>Custom Information</label>
+                    {isEditingTitle ? (
+                        <input
+                            type="text"
+                            value={sectionTitle}
+                            onChange={handleTitleChange}
+                            onKeyDown={handleTitleKeyPress}
+                            onBlur={handleBlur}
+                            autoFocus
+                            className='section__title-input'
+                        />
+                    ) : (
+                        <label onClick={handleTitleClick}>{sectionTitle}</label>
+                    )}
                     <textarea
                         className='content__textArea'
                         rows='8'
-                        name='workObligations'
+                        name='customInformation'
                         // value={company.workObligations.join('\n')}
                         // onChange={(e) => handleWorkObligationsChange(index, e.target.value)}
                     ></textarea>
