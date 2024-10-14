@@ -58,6 +58,8 @@ function CvPreview({uploadedImage, formData}){
                 </div>
             ))}
         </div>
+
+        
     </div>
     </>)
 }

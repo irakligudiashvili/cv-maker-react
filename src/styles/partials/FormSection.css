@@ -16,18 +16,26 @@
     font-weight: bolder;
 }
 
-.section__header:hover{
-    cursor: pointer;
-}
-
 .section__subheader{
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.section__subheader:hover{
+.hover{
+    cursor: pointer;
     opacity: 0.7;
+}
+
+.section__title-input{
+    height: 25px;
+    margin: 3.5px 0;
+
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+
+    font-size: 1.25rem;
 }
 
 .section__config{
@@ -94,6 +102,12 @@ input[type="file"] {
     column-gap: 30px;
 
     margin-top: 20px;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    gap: 7.5px;
 }
 
 .content__wrapper{

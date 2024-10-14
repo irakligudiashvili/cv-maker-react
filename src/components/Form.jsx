@@ -3,6 +3,10 @@ import '../styles/Form.css'
 import FormSection from './partials/FormSection'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useState } from "react"
+import WorkSection from './partials/WorkSection'
+import EducationSection from './partials/EducationSection'
+import PersonalSection from './partials/PersonalSection'
+import CustomSection from './partials/CustomSection'
 
 function Form({onImageUpload, onFormDataChange}){
     const [customSections, setCustomSections] = useState([]);
@@ -12,9 +16,16 @@ function Form({onImageUpload, onFormDataChange}){
 
         setCustomSections([
             ...customSections,
-            {id: customSections.length}
+            {id: customSections.length, title: '', content: ''}
         ])
     })
+
+    const handleCustomSectionChange = (index, field, value) => {
+        const updatedSections = [...customSections];
+        updatedSections[index][field] = value;
+        setCustomSections(updatedSections);
+        onFormDataChange('customSections', updatedSections);
+    }
 
     return (
     <form className='form'>
@@ -25,15 +36,16 @@ function Form({onImageUpload, onFormDataChange}){
         </div>
 
         <div className='form__section'>
-            <FormSection onFormDataChange={onFormDataChange} title="Personal Details" personal={true} isRemovable={false} isDraggable={false} upload={true} onImageUpload={onImageUpload} />
-            <FormSection onFormDataChange={onFormDataChange} title="Work Experience" work={true} isRemovable={false} isDraggable={false} />
-            <FormSection onFormDataChange={onFormDataChange} title="Education" education={true} isRemovable={false} isDraggable={false} />
+            <PersonalSection onImageUpload={onImageUpload} onFormDataChange={onFormDataChange} />
+            <WorkSection onFormDataChange={onFormDataChange} />
+            <EducationSection onFormDataChange={onFormDataChange} />
             
-            {customSections.map((section) => (
-                <FormSection 
+            {customSections.map((section, index) => (
+                <CustomSection 
                     key={section.id}
-                    title='Custom Section'
-                    custom={true}
+                    title={section.title}
+                    onTitleChange={(value) => handleCustomSectionChange(index, 'title', value)}
+                    onContenChange={(value) => handleCustomSectionChange(index, 'content', value)}
                 />
             ))}
         </div>
