@@ -61,8 +61,8 @@ function CustomSection({title, custom}){
                 </div>
 
                 <div className='section__config'>
-                    {custom && <FontAwesomeIcon icon={faTrash} className='section__config__delete' />}
-                    {custom && <FontAwesomeIcon icon={faGripVertical} className='section__config__drag' />}
+                    <FontAwesomeIcon icon={faTrash} className='section__config__delete' />
+                    <FontAwesomeIcon icon={faGripVertical} className='section__config__drag' />
                     <FontAwesomeIcon icon={faChevronDown} onClick={toggleVisibility} className='' />
                 </div>
             </div>
