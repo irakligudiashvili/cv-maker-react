@@ -59,6 +59,20 @@ function CvPreview({uploadedImage, formData}){
                 ))}
             </div>
 
+            {formData.customSections && formData.customSections.map((custom, index) => (
+                <div key={index} className='cv__section'>
+                    <h2 className='cv__section__header'>{custom.title || 'Custom Section'}</h2>
+                    <div className='cv__section__content'>
+                        <div className='cv__section__subheader'>
+                            <h3>{custom.subheader || 'Subheader'}</h3>
+                        </div>
+                        <div className='cv__section__content'>
+                            <p>{custom.content || 'Custom Content'}</p>
+                        </div>
+                    </div>
+                </div>
+            ))}
+
             
         </div>
     )

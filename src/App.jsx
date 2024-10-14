@@ -10,7 +10,14 @@ function App() {
     fullName: '',
     email: '',
     phoneNumber: '',
-    githubUsername: ''
+    githubUsername: '',
+    customSections: [
+      {
+        title: '',
+        subheader: '',
+        content: ''
+      }
+    ]
   });
 
   const handleImageUpload = (imageUrl) => {

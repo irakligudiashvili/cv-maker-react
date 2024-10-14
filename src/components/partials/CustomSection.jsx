@@ -2,7 +2,7 @@ import { faChevronDown, faGripVertical, faPenToSquare, faTrash } from "@fortawes
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
-function CustomSection({title, custom}){
+function CustomSection({ customContent, onDelete, onTitleChange, onSubheaderChange, onContentChange }){
 
     // Toggle Visibility
 
@@ -12,19 +12,14 @@ function CustomSection({title, custom}){
         setIsVisible(!isVisible);
     }
 
-    // Custom Section Functionality
+    // Custom Section Title Editting 
 
     const [isEditingTitle, setIsEditingTitle] = useState(false);
-    const [sectionTitle, setSectionTitle] = useState('Custom Section');
 
     const handleTitleClick = () => {
         console.log('Title clicked');
         setIsEditingTitle(true);
     };
-
-    const handleTitleChange = (e) => {
-        setSectionTitle(e.target.value);
-    }
 
     const handleTitleKeyPress = (e) => {
         if(e.key === 'Enter'){
@@ -37,6 +32,32 @@ function CustomSection({title, custom}){
         setIsEditingTitle(false);
     }
 
+    // Custom Section Data Display
+
+    // const [customContent, setCustomContent] = useState({
+    //     title: 'Custom Content',
+    //     subheader: '',
+    //     content: ['']
+    // });
+
+    // const handleTitleChange = (e) => {
+    //     const updatedContent = {...customContent, title: e.target.value};
+    //     setCustomContent(updatedContent);
+    //     onFormDataChange('customContent', updatedContent);
+    // }
+
+    // const handleSubheaderInputChange = (value) => {
+    //     const updatedContent = { ...customContent, subheader: value };
+    //     setCustomContent(updatedContent);
+    //     onFormDataChange('customContent', updatedContent);
+    // };
+    
+    // const handleCustomContentChange = (value) => {
+    //     const updatedContent = { ...customContent, content: value.split('\n') };
+    //     setCustomContent(updatedContent);
+    //     onFormDataChange('customContent', updatedContent);
+    // };
+
     // Return
 
     return (
@@ -47,21 +68,24 @@ function CustomSection({title, custom}){
                     {isEditingTitle ? (
                         <input 
                         type="text"
-                        value={sectionTitle}
-                        onChange={handleTitleChange}
+                        value={customContent.title}
+                        name='title'
+                        onChange={(e) => onTitleChange(e.target.value)}
                         onKeyDown={handleTitleKeyPress}
                         onBlur={handleBlur}
                         autoFocus
                         className='section__title-input'
                         />
                     ) : (
-                        <h2 className='hover' onClick={handleTitleClick}>{sectionTitle}</h2>
+                        <div className='row' onClick={handleTitleClick}>
+                            <h2 className='hover'>{customContent.title}</h2>
+                            <FontAwesomeIcon icon={faPenToSquare} className='hover'/>
+                        </div>
                     )}
-                    <FontAwesomeIcon icon={faPenToSquare} className='hover'/>
                 </div>
 
                 <div className='section__config'>
-                    <FontAwesomeIcon icon={faTrash} className='section__config__delete' />
+                    <FontAwesomeIcon icon={faTrash} className='section__config__delete' onClick={onDelete} />
                     <FontAwesomeIcon icon={faGripVertical} className='section__config__drag' />
                     <FontAwesomeIcon icon={faChevronDown} onClick={toggleVisibility} className='' />
                 </div>
@@ -70,12 +94,18 @@ function CustomSection({title, custom}){
             <div className={`content ${!isVisible ? 'hidden' : ''}`}>
                 <div className="content__container column">
                     <label className='content__label'>Custom Heading</label>
-                    <input className='content__input' />
+                    <input className='content__input'
+                    name='subheader'
+                    value={customContent.subheader}
+                    onChange={(e) => onSubheaderChange(e.target.value)}
+                    />
                     <label className='content__label'>Custom Section</label>
                     <textarea
                         className='content__textArea'
                         rows='8'
-                        name='customInformation'
+                        name='content'
+                        value={customContent.content}
+                        onChange={(e) => onContentChange(e.target.value)}
                     ></textarea>
                 </div>
             </div>

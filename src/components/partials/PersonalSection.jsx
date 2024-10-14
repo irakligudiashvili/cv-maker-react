@@ -40,7 +40,7 @@ function PersonalSection({onImageUpload, onFormDataChange}){
     return (
         <div className="section">
             <div className="section__header">
-                <h2>Education</h2>
+                <h2>Personal Info</h2>
                 <FontAwesomeIcon icon={faChevronDown} onClick={toggleVisibility} className='' />
             </div>
 

@@ -16,7 +16,7 @@ function Form({onImageUpload, onFormDataChange}){
 
         setCustomSections([
             ...customSections,
-            {id: customSections.length, title: '', content: ''}
+            {id: customSections.length, title: 'Custom Section', subheader: '', content: ''}
         ])
     })
 
@@ -26,6 +26,12 @@ function Form({onImageUpload, onFormDataChange}){
         setCustomSections(updatedSections);
         onFormDataChange('customSections', updatedSections);
     }
+
+    const handleCustomSectionDelete = (index) => {
+        const updatedSections = customSections.filter((_, i) => i !==index);
+        setCustomSections(updatedSections);
+        onFormDataChange('customSections', updatedSections);
+    } 
 
     return (
     <form className='form'>
@@ -39,13 +45,15 @@ function Form({onImageUpload, onFormDataChange}){
             <PersonalSection onImageUpload={onImageUpload} onFormDataChange={onFormDataChange} />
             <WorkSection onFormDataChange={onFormDataChange} />
             <EducationSection onFormDataChange={onFormDataChange} />
-            
+
             {customSections.map((section, index) => (
                 <CustomSection 
                     key={section.id}
-                    title={section.title}
+                    customContent={section}
                     onTitleChange={(value) => handleCustomSectionChange(index, 'title', value)}
-                    onContenChange={(value) => handleCustomSectionChange(index, 'content', value)}
+                    onSubheaderChange={(value) => handleCustomSectionChange(index, 'subheader', value)}
+                    onContentChange={(value) => handleCustomSectionChange(index, 'content', value)}
+                    onDelete={() => handleCustomSectionDelete(index)}
                 />
             ))}
         </div>
