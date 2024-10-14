@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../styles/Form.css'
-import FormSection from './partials/FormSection'
+import '../styles/partials/FormSection.css'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useState } from "react"
 import WorkSection from './partials/WorkSection'

@@ -35,6 +35,8 @@ function PersonalSection({onImageUpload, onFormDataChange}){
         onFormDataChange(name, value)
     }
 
+    // Return
+
     return (
         <div className="section">
             <div className="section__header">
