@@ -5,8 +5,6 @@
 
     box-sizing: border-box;
     padding: 15px;
-
-    overflow-y: auto;
 }
 
 .form__button__wrapper{
@@ -102,4 +100,16 @@
 
     align-items: center;
     gap: 5px;
+}
+
+@media screen and (width > 1250px){
+    .form{
+        overflow-y: auto;
+    }
+}
+
+@media screen and (width <= 1250px){
+    .form{
+        /* height: auto; */
+    }
 }

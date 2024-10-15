@@ -62,6 +62,10 @@
     .preview--mobile{
         display: none;
     }
+
+    .config{
+        display: none;
+    }
 }
 
 @media screen and (width <= 1250px){
