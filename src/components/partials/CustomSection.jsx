@@ -32,32 +32,6 @@ function CustomSection({ customContent, onDelete, onTitleChange, onSubheaderChan
         setIsEditingTitle(false);
     }
 
-    // Custom Section Data Display
-
-    // const [customContent, setCustomContent] = useState({
-    //     title: 'Custom Content',
-    //     subheader: '',
-    //     content: ['']
-    // });
-
-    // const handleTitleChange = (e) => {
-    //     const updatedContent = {...customContent, title: e.target.value};
-    //     setCustomContent(updatedContent);
-    //     onFormDataChange('customContent', updatedContent);
-    // }
-
-    // const handleSubheaderInputChange = (value) => {
-    //     const updatedContent = { ...customContent, subheader: value };
-    //     setCustomContent(updatedContent);
-    //     onFormDataChange('customContent', updatedContent);
-    // };
-    
-    // const handleCustomContentChange = (value) => {
-    //     const updatedContent = { ...customContent, content: value.split('\n') };
-    //     setCustomContent(updatedContent);
-    //     onFormDataChange('customContent', updatedContent);
-    // };
-
     // Return
 
     return (

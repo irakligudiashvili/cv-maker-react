@@ -8,7 +8,7 @@ function CvPreview({uploadedImage, formData}){
     const backgroundImage = uploadedImage ? `url(${uploadedImage})` : `url(${placeholderImage})`;
 
     return (
-        <div className='cv'>
+        <div>
             <div className='cv__header'>
                 <div className='cv__img' style={{ backgroundImage }} />
                 <div className='div__header__details'>

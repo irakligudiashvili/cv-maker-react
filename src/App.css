@@ -1,21 +1,79 @@
-.body{
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-
-  padding: 15px;
-
-  width: calc(100% - 30px);
-  height: calc(100% - 30px);
-  margin: auto;
-  justify-content: space-between;
-  align-items: center;
-}
 
 ::-webkit-scrollbar{
-  width: 12.5px;
+    width: 12.5px;
 }
 
 ::-webkit-scrollbar-track{
-  background: #3b3b3b;
+    background: #3b3b3b;
+}
+
+.body{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    padding: 15px;
+
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.config{
+    display: flex;
+    flex-direction: row-reverse;
+
+    cursor: pointer;
+}
+
+.config__view{
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    
+    background-color: blue;
+    
+    box-sizing: border-box;
+    padding: 10px;
+    
+    border-radius: 50%;
+
+    z-index: 2;
+}
+
+.config__download{
+    position: absolute;
+    bottom: 15px;
+    right: 40px;
+
+    z-index: 1;
+
+    background-color: lightblue;
+    padding: 10px;
+    padding-right: 20px;
+
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+@media screen and (width > 1250px){
+    .preview--mobile{
+        display: none;
+    }
+}
+
+@media screen and (width <= 1250px){
+    .preview--desktop{
+        display: none;
+    }
+
+    .preview--mobile{
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        width: fit-content;
+    }
 }
