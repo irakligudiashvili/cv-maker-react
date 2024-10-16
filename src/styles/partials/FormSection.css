@@ -146,8 +146,10 @@ input[type="file"] {
 .content__container--triple{
     display: flex;
     flex-direction: row;
-    /* flex-wrap: nowrap; */
+    flex-wrap: nowrap;
     text-align: center;
+    
+    justify-content: end;
 
     gap: 25px;
 }
@@ -212,13 +214,19 @@ input[type="file"] {
     text-justify: inter-word;
 }
 
-@media screen and (width <= 1250px) and (width > 500px){
+.content__container--quad{
+    display: flex;
+    flex-direction: row;
+}
+
+@media screen and (width <= 1250px) and (width > 550px){
     .section{
         width: 100%;
     }
+
 }
 
-@media screen and (width < 500px){
+@media screen and (width <= 550px){
     .content__wrapper{
         width: 100%;
     }
@@ -226,6 +234,7 @@ input[type="file"] {
     .content__container--triple{
         display: flex;
         flex-direction: column;
+        
         text-align: left;
     }
 }

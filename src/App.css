@@ -1,60 +1,24 @@
-.config{
+.body{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    gap: 20px;
 
-    cursor: pointer;
+    padding: 15px;
+
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.config__view{
-    position: fixed;
-    bottom: 15px;
-    right: 20px;
-    
-    background-color: blue;
-    
-    box-sizing: border-box;
-    padding: 10px;
-    
-    border-radius: 50%;
-    
-    z-index: 2;
+.config{
+    display: none;
 }
 
-.config__download{
-    position: fixed;
-    bottom: 15px;
-    right: 40px;
-
-    z-index: 1;
-
-    background-color: lightblue;
-    padding: 10px;
-    padding-right: 20px;
-
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
 
 @media screen and (width > 1250px){
-    .body{
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-    
-        padding: 15px;
-    
-        width: calc(100% - 30px);
-        height: calc(100% - 30px);
-        margin: auto;
-        justify-content: space-between;
-        align-items: center;
-    }
-
     .preview--mobile{
-        display: none;
-    }
-
-    .config{
         display: none;
     }
 
@@ -78,6 +42,9 @@
 
 @media screen and (width <= 1250px){
     .body{
+        background-color: #505255;
+        height: auto;
+        display: block;
         padding: 15px 6px;
     }
 
@@ -95,8 +62,40 @@
         z-index: 1;
     }
 
-    .body{
-        background-color: #505255;
-        height: auto;
+    .config{
+        display: flex;
+        flex-direction: row-reverse;
+    
+        cursor: pointer;
+    }
+    
+    .config__view{
+        position: fixed;
+        bottom: 15px;
+        right: 20px;
+        
+        background-color: blue;
+        
+        box-sizing: border-box;
+        padding: 10px;
+        
+        border-radius: 50%;
+        
+        z-index: 2;
+    }
+    
+    .config__download{
+        position: fixed;
+        bottom: 15px;
+        right: 40px;
+    
+        z-index: 1;
+    
+        background-color: lightblue;
+        padding: 10px;
+        padding-right: 20px;
+    
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
     }
 }

@@ -87,6 +87,11 @@
     opacity: 1;
 }
 
+.form__remove--dark{
+
+    margin-bottom: 0;
+}
+
 .row{
     display: flex;
     flex-direction: row;
@@ -101,12 +106,13 @@
     }
 }
 
-@media screen and (width <= 1250px) and (width > 500px){
-    .form{
+@media screen and (width <= 1250px) and (width > 550px){
+    .section{
+        width: 100%;
     }
 }
 
-@media screen and (width <= 500px){
+@media screen and (width <= 550px){
     .content__container{
         display: flex;
         flex-direction: column;
@@ -123,6 +129,7 @@
     }
 
     .content__input{
-        width: 100vw;
+        width: 100%;
     }
+    
 }
