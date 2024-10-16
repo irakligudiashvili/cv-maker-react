@@ -1,26 +1,3 @@
-
-::-webkit-scrollbar{
-    width: 12.5px;
-}
-
-::-webkit-scrollbar-track{
-    background: #3b3b3b;
-}
-
-.body{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-
-    padding: 15px;
-
-    width: calc(100% - 30px);
-    height: calc(100% - 30px);
-    margin: auto;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .config{
     display: flex;
     flex-direction: row-reverse;
@@ -29,7 +6,7 @@
 }
 
 .config__view{
-    position: absolute;
+    position: fixed;
     bottom: 15px;
     right: 20px;
     
@@ -39,12 +16,12 @@
     padding: 10px;
     
     border-radius: 50%;
-
+    
     z-index: 2;
 }
 
 .config__download{
-    position: absolute;
+    position: fixed;
     bottom: 15px;
     right: 40px;
 
@@ -59,6 +36,20 @@
 }
 
 @media screen and (width > 1250px){
+    .body{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    
+        padding: 15px;
+    
+        width: calc(100% - 30px);
+        height: calc(100% - 30px);
+        margin: auto;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .preview--mobile{
         display: none;
     }
@@ -66,18 +57,46 @@
     .config{
         display: none;
     }
+
+    ::-webkit-scrollbar{
+        width: 12.5px;
+    }
+    
+    ::-webkit-scrollbar-track{
+        background: #3b3b3b;
+    }
+
+    .form{
+        background-color: #505255;
+        height: 100%;
+        width: 100%;
+    
+        box-sizing: border-box;
+        padding: 15px;
+    }
 }
 
 @media screen and (width <= 1250px){
+    .body{
+        padding: 15px 6px;
+    }
+
     .preview--desktop{
         display: none;
     }
 
     .preview--mobile{
-        position: absolute;
+        position: fixed;
         left: 0;
         right: 0;
         margin-inline: auto;
         width: fit-content;
+
+        z-index: 1;
+    }
+
+    .body{
+        background-color: #505255;
+        height: auto;
     }
 }

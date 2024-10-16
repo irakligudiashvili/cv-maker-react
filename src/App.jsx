@@ -40,19 +40,21 @@ function App() {
 
     return (
         <div className='body'>
-            <Form onImageUpload={handleImageUpload} onFormDataChange={handleFormDataChange} />
-            <div className='preview--desktop cv'>
-                <CvPreview uploadedImage={uploadedImage} formData={formData} />
+
+            <div className='config'>
+                <FontAwesomeIcon icon={faEye} className='config__view' onClick={toggleMobilePreviewVisibility} />
+                <FontAwesomeIcon icon={faFilePdf} className={`config__download ${isMobilePreviewVisible ? '' : 'hidden'}`} />
             </div>
 
             <div className={`preview--mobile cv ${isMobilePreviewVisible ? '' : 'hidden'}`}>
                 <CvPreview uploadedImage={uploadedImage} formData={formData} />
             </div>
 
-            <div className='config'>
-                <FontAwesomeIcon icon={faEye} className='config__view' onClick={toggleMobilePreviewVisibility} />
-                <FontAwesomeIcon icon={faFilePdf} className={`config__download ${isMobilePreviewVisible ? '' : 'hidden'}`} />
+            <Form onImageUpload={handleImageUpload} onFormDataChange={handleFormDataChange} />
+            <div className='preview--desktop cv'>
+                <CvPreview uploadedImage={uploadedImage} formData={formData} />
             </div>
+
         </div>
     )
 }

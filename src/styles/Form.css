@@ -1,11 +1,4 @@
-.form{
-    background-color: #505255;
-    height: 100%;
-    width: 100%;
 
-    box-sizing: border-box;
-    padding: 15px;
-}
 
 .form__button__wrapper{
     display: flex;
@@ -108,8 +101,28 @@
     }
 }
 
-@media screen and (width <= 1250px){
+@media screen and (width <= 1250px) and (width > 500px){
     .form{
-        /* height: auto; */
+    }
+}
+
+@media screen and (width <= 500px){
+    .content__container{
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .content__wrapper{
+        width: 100%;
+    }
+
+    .content__label{
+        width: 100%;
+    }
+
+    .content__input{
+        width: 100vw;
     }
 }

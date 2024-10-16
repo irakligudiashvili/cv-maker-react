@@ -35,12 +35,6 @@ function Form({onImageUpload, onFormDataChange}){
 
     return (
     <form className='form'>
-        {/* <div className='form__button__wrapper'>
-            <button className='form__button form__button--load'>Load Example</button>
-            <button className='form__button form__button--clear'>Clear Resume</button>
-            <button className='form__button form__button--undo'>Undo</button>
-        </div> */}
-
         <div className='form__section'>
             <PersonalSection onImageUpload={onImageUpload} onFormDataChange={onFormDataChange} />
             <WorkSection onFormDataChange={onFormDataChange} />

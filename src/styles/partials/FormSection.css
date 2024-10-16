@@ -146,7 +146,7 @@ input[type="file"] {
 .content__container--triple{
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    /* flex-wrap: nowrap; */
     text-align: center;
 
     gap: 25px;
@@ -210,4 +210,22 @@ input[type="file"] {
 .cv__section__ul li{
     text-align: justify;
     text-justify: inter-word;
+}
+
+@media screen and (width <= 1250px) and (width > 500px){
+    .section{
+        width: 100%;
+    }
+}
+
+@media screen and (width < 500px){
+    .content__wrapper{
+        width: 100%;
+    }
+
+    .content__container--triple{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
 }
