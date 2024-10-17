@@ -32,6 +32,13 @@ function CustomSection({ customContent, onDelete, onTitleChange, onSubheaderChan
         setIsEditingTitle(false);
     }
 
+    // Line break
+
+    const handleContetnChange = (e) => {
+        const value = e.targt.value.split('\n');
+        onContentChange(value.join('\n'));
+    }
+
     // Return
 
     return (
@@ -60,8 +67,8 @@ function CustomSection({ customContent, onDelete, onTitleChange, onSubheaderChan
 
                 <div className='section__config'>
                     <FontAwesomeIcon icon={faTrash} className='section__config__delete' onClick={onDelete} />
-                    <FontAwesomeIcon icon={faGripVertical} className='section__config__drag' />
-                    <FontAwesomeIcon icon={faChevronDown} onClick={toggleVisibility} className='' />
+                    {/* <FontAwesomeIcon icon={faGripVertical} className='section__config__drag' /> */}
+                    <FontAwesomeIcon icon={faChevronDown} onClick={toggleVisibility} className='hover' />
                 </div>
             </div>
     
@@ -79,7 +86,7 @@ function CustomSection({ customContent, onDelete, onTitleChange, onSubheaderChan
                         rows='8'
                         name='content'
                         value={customContent.content}
-                        onChange={(e) => onContentChange(e.target.value)}
+                        onChange={handleContetnChange}
                     ></textarea>
                 </div>
             </div>

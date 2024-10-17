@@ -46,7 +46,7 @@ function EducationSection({ onFormDataChange }){
         <div className="section">
             <div className="section__header">
                 <h2>Education</h2>
-                <FontAwesomeIcon icon={faChevronDown} onClick={toggleVisibility} className='' />
+                <FontAwesomeIcon icon={faChevronDown} onClick={toggleVisibility} className='hover' />
             </div>
 
             <div className={`content ${!isVisible ? 'hidden' : ''}`}>
