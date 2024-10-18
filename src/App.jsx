@@ -43,7 +43,6 @@ function App() {
 
             <div className='config'>
                 <FontAwesomeIcon icon={faEye} className='config__view' onClick={toggleMobilePreviewVisibility} />
-                <FontAwesomeIcon icon={faFilePdf} className={`config__download ${isMobilePreviewVisible ? '' : 'hidden'}`} />
             </div>
 
             <div className={`preview--mobile cv ${isMobilePreviewVisible ? '' : 'hidden'}`}>
