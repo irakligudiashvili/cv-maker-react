@@ -34,9 +34,8 @@ function CustomSection({ customContent, onDelete, onTitleChange, onSubheaderChan
 
     // Line break
 
-    const handleContetnChange = (e) => {
-        const value = e.targt.value.split('\n');
-        onContentChange(value.join('\n'));
+    const handleContentChange = (e) => {
+        onContentChange(e.target.value);
     }
 
     // Return
@@ -86,7 +85,7 @@ function CustomSection({ customContent, onDelete, onTitleChange, onSubheaderChan
                         rows='8'
                         name='content'
                         value={customContent.content}
-                        onChange={handleContetnChange}
+                        onChange={handleContentChange}
                     ></textarea>
                 </div>
             </div>
