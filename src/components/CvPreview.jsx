@@ -6,12 +6,17 @@ import placeholderImage from '../assets/placeholder_portrait.png';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
-function CvPreview({uploadedImage, formData}){
+function CvPreview({uploadedImage, formData, previewId}){
     const backgroundImage = uploadedImage ? `url(${uploadedImage})` : `url(${placeholderImage})`;
+    
 
     const downloadPDF = () => {
-        const input = document.getElementById('cvPreview');
-        html2canvas(input, {scale: 2}).then((canvas) => {
+        const input = document.getElementById('cvPreviewDesktop');
+        const inputClass = document.querySelector('.preview--desktop');
+        const originalDisplay = inputClass.style.display;
+        inputClass.style.display = 'block';
+
+        html2canvas(input, { scale: 2 }).then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
             const imgWidth = 190;
@@ -19,18 +24,19 @@ function CvPreview({uploadedImage, formData}){
             const imgHeight = (canvas.height * imgWidth) / canvas.width;
             let heightLeft = imgHeight;
             let position = 10;
-
+    
             pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
             heightLeft -= pageHeight;
-
+    
             while (heightLeft >= 0) {
                 position = heightLeft - imgHeight + 10;
                 pdf.addPage();
                 pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
                 heightLeft -= pageHeight;
             }
-
+    
             pdf.save('cv.pdf');
+            inputClass.style.display = originalDisplay;
         });
     }
 
@@ -38,7 +44,7 @@ function CvPreview({uploadedImage, formData}){
 
         <>
             <button onClick={downloadPDF} className='download-button'>Download</button>
-            <div id='cvPreview'>
+            <div id={previewId}>
                 <div className='cv__header'>
                     <div className='cv__img' style={{ backgroundImage }} />
                     <div className='div__header__details'>

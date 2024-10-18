@@ -47,12 +47,12 @@ function App() {
             </div>
 
             <div className={`preview--mobile cv ${isMobilePreviewVisible ? '' : 'hidden'}`}>
-                <CvPreview uploadedImage={uploadedImage} formData={formData} />
+                <CvPreview uploadedImage={uploadedImage} formData={formData} previewId="cvPreviewMobile" />
             </div>
 
             <Form onImageUpload={handleImageUpload} onFormDataChange={handleFormDataChange} />
             <div className='preview--desktop cv'>
-                <CvPreview uploadedImage={uploadedImage} formData={formData} />
+                <CvPreview uploadedImage={uploadedImage} formData={formData} previewId="cvPreviewDesktop" />
             </div>
 
         </div>
